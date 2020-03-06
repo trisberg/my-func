@@ -1,0 +1,32 @@
+---
+apiVersion: build.projectriff.io/v1alpha1
+kind: Container
+metadata:
+  creationTimestamp: null
+  name: my-func
+  namespace: default
+spec:
+  image: my-func
+status: {}
+
+---
+apiVersion: knative.projectriff.io/v1alpha1
+kind: Deployer
+metadata:
+  creationTimestamp: null
+  name: my-func
+  namespace: default
+spec:
+  build:
+    containerRef: my-func
+  ingressPolicy: External
+  scale: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - name: ""
+        resources: {}
+status: {}
+

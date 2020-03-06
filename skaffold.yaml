@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: my-func
+build:
+  artifacts:
+    - image: my-func
+      buildpack:
+        builder: "cloudfoundry/cnb:cflinuxfs3"
+  tagPolicy:
+    sha256: {}
+deploy:
+  kubectl:
+    manifests:
+    - riff-deployer.yaml
